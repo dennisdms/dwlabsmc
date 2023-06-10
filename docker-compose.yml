@@ -16,6 +16,11 @@ services:
       USE_AIKAR_FLAGS: "TRUE"
       MODE: "survival"
     tty: true
+    logging: 
+      driver: "local"
+      options:
+        max-size: 100m
+        max-file: "100" 
     stdin_open: true
     restart: unless-stopped
     volumes:
