@@ -7,24 +7,14 @@ services:
       - 25565:25565
     environment:
       EULA: "TRUE"
-        # TYPE: "PAPER"
       FORCE_REDOWNLOAD: "TRUE"
       SERVER_NAME: "Ghoulz"
       VERSION: "1.20" 
       MOTD: "Welcome to \u00A74GhoulzMC \u00A7r"
       ICON: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg"
-        #OVERIDE_ICON: "TRUE"
       MEMORY: "28G"
       USE_AIKAR_FLAGS: "TRUE"
       MODE: "survival"
-      # SPAWN_PROTECTION: "0"
-      #  VIEW_DISTANCE: "12"
-      #SIMULATION_DISTANCE: "12"
-      #ALLOW_FLIGHT: "TRUE"
-      #SPAWN_ANIMALS: "FALSE"
-      #SPAWN_NPCS: "TRUE"
-      #PVP: "FALSE"
-      # ENABLE_COMMAND_BLOCK: "TRUE"
     tty: true
     stdin_open: true
     restart: unless-stopped
