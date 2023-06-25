@@ -1,28 +1,38 @@
 version: "3"
 
 services:
-  mc:
+  mc-dev:
     image: itzg/minecraft-server
     ports:
       - 25566:25565
     environment:
       EULA: "TRUE"
       FORCE_REDOWNLOAD: "TRUE"
-      SERVER_NAME: "dwlabsmc"
+      SERVER_NAME: "GhoulzMC"
       VERSION: "1.20" 
-      MOTD: "Welcome to \u00A74dwlabsmc. Brough to you by Dennis and Wyatt. (formerly GhoulzMC) \u00A7r"
+      MOTD: "Welcome to \u00A7GhoulzMC. \u00A7r"
       ICON: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg"
       MEMORY: "24G"
       USE_AIKAR_FLAGS: "TRUE"
       MODE: "survival"
+      DIFFICULTY: "hard"
       VANILLATWEAKS_SHARECODE: "DE5yHK"
-    tty: true
-    logging: 
-      driver: "local"
-      options:
-        max-size: 100m
-        max-file: "100" 
-    stdin_open: true
     restart: unless-stopped
     volumes:
-      - ./data:/data
+      - mc:/data
+  backups-dev:
+    image: itzg/mc-backup
+    environment:
+      BACKUP_INTERVAL: "1m"
+      RCON_HOST: mc
+      volumes:
+        - /home/ghoul/mc-backups:/backups
+        - mc:/data:ro
+logging: 
+  driver: "local"
+  options:
+    max-size: 100m
+    max-file: "100" 
+ 
+volumes:
+  mc: {}
