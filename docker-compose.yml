@@ -11,11 +11,11 @@ services:
       VERSION: "1.20" 
       MOTD: "Welcome to \u00A7GhoulzMC. \u00A7r"
       ICON: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg/1280px-Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg"
-      MEMORY: "24G"
+      MEMORY: "2G"
       USE_AIKAR_FLAGS: "TRUE"
       MODE: "survival"
       DIFFICULTY: "hard"
-      VANILLATWEAKS_SHARECODE: "DE5yHK"
+      # VANILLATWEAKS_SHARECODE: "DE5yHK"
     restart: unless-stopped
     volumes:
       - mc:/data
@@ -23,15 +23,12 @@ services:
     image: itzg/mc-backup
     environment:
       BACKUP_INTERVAL: "1m"
-      RCON_HOST: mc
-      volumes:
-        - /home/ghoul/mc-backups:/backups
-        - mc:/data:ro
-logging: 
-  driver: "local"
-  options:
-    max-size: 100m
-    max-file: "100" 
- 
+      # RCON_HOST: mc-dev
+    volumes:
+      - backups:/backups
+      - mc:/data:ro
+    network_mode: "service:mc-dev"
+
 volumes:
   mc: {}
+  backups: {}
